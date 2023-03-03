@@ -24,7 +24,7 @@
    | F | 1111 | 0 | 1 | 1 | 0 |
 
 
-2.Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
+2. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
 ```vhdl
    --------------------------------------------------------------------
@@ -42,5 +42,6 @@
     -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
     LED(7) <= '1' when ((SW = "0001") or (SW = "0010") or (SW = "0100") or (SW = "1000")) else '0';
    ```
- 3.Screenshot with simulated time waveforms for LED(7:4). Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
+ 3. Screenshot with simulated time waveforms for LED(7:4). Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
+ ![Simulation screenshot](images/simulace.png)
 
