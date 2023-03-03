@@ -83,10 +83,10 @@
 
 2. Screenshot with simulated time waveforms. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-   ![your figure](images/simulace.png)
+   ![your figure](images/simulace.pn)
 
    S jednotlivymi bity:
-   ![my figure by bits](images/simulace_1.png)
+   ![my figure by bits](images/simulace_1.pn)
 
 ### LED(7:4) indicators
 
