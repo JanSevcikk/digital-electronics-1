@@ -24,7 +24,7 @@
    | F | 1111 | 0 | 1 | 1 | 0 |
 
 
-2. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
+2. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines.
 
 ```vhdl
    --------------------------------------------------------------------
