@@ -42,7 +42,7 @@ end t_ff_rst;
 architecture Behavioral of t_ff_rst is
     -- It must use this local signal instead of output ports
     -- because "out" ports cannot be read within the architecture
-    signal s_q : std_logic;
+    signal sig_q : std_logic;
 begin
     --------------------------------------------------------
     -- p_t_ff_rst:
@@ -52,22 +52,21 @@ begin
     -- q(n+1) =  q(n) if t = 0 (no change)
     -- q(n+1) = /q(n) if t = 1 (inversion)
     --------------------------------------------------------
-    p_t_ff_rst : process(clk)
+   p_t_ff_rst : process (clk) is
     begin
         if rising_edge(clk) then
-
-
-            if (rst = '1' ) then
-                s_q     <= '0';
-            else
-                -- s_q     <= ( (t and (not s_q)) or ((not t) and s_q) );
-                s_q <= t xor s_q; -- predchozi radek je definici funkce xor
+        -- WRITE YOUR CODE HERE
+            if (rst = '1') then
+                sig_q <= '0';
+             elsif (t = '0') then
+                sig_q <= sig_q;
+             else
+                sig_q <= not sig_q;
             end if;
-            
         end if;
     end process p_t_ff_rst;
 
     -- Output ports are permanently connected to local signal
-    q     <= s_q;
-    q_bar <= not s_q;
+    q     <= sig_q;
+    q_bar <= not sig_q;
 end architecture Behavioral;

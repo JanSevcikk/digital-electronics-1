@@ -45,7 +45,7 @@ architecture testbench of tb_ff_rst is
     signal sig_data       : std_logic;
     signal sig_dq         : std_logic;
     signal sig_dq_bar     : std_logic;
-    signal sig_tq         : std_logic;
+    signal sig_tq         : std_logic;-- pridany vystupy pro T klopny obvod
     signal sig_tq_bar     : std_logic;
 
 begin
@@ -62,7 +62,7 @@ begin
 
     -- Connecting testbench signals with t_ff_rst entity
     -- (Unit Under Test)
-    uut_t_ff_rst : entity work.t_ff_rst
+    uut_t_ff_rst : entity work.t_ff_rst -- vytvorim dalsi mapovani pro T klopny obvod
         port map (
             clk   => sig_clk_100MHz,
             rst   => sig_rst,
@@ -112,7 +112,8 @@ begin
   begin
 
     report "Stimulus process started";
-
+ -- nedavat nasobky 5 ns pro duvod binary_read
+        -- naplnit 200 n
     sig_data <= '0';
     wait for 47 ns;
 
