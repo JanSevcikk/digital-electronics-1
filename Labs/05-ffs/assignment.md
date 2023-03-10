@@ -9,7 +9,8 @@
 ### JK Flip-flop
 
 1. Listing of VHDL architecture for JK-type flip-flop. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
-
+2. 
+```vhdl
 architecture Behavioral of jk_ff_rst is
 
     signal s_q : std_logic;
@@ -43,6 +44,7 @@ begin
     q     <= sig_q;
     q_bar <= not sig_q;
 end architecture Behavioral;
+```
 
 ### Shift register
 
