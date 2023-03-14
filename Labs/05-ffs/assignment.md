@@ -23,26 +23,23 @@ begin
                     s_q <= '0';
                     
                 elsif (j = '0' and k = '0') then
-                    sig_q <= sig_q;  --priradime stejnou hodnotu -> nic se nemeni
+                    s_q <= sig_q;  --priradime stejnou hodnotu -> nic se nemeni
                     
                 elsif (j = '0' and k = '1') then
-                    sig_q <= '0';  --resetovani
+                    s_q <= '0';  --resetovani
                         
                 elsif (j = '1' and k = '0') then
-                    sig_q <= '1';   --setovani
+                    s_q <= '1';   --setovani
                 
                 else 
-                    sig_q <= not sig_q; -- zamenujeme q (j=1 a k=1) 
+                    s_q <= not s_q; -- zamenujeme q (j=1 a k=1) 
                 end if;
           end if;
-         q     <= sig_q;
-         q_bar <= not sig_q;            
-          
-        end process p_jk_ff_rst;
-
     -- Output ports are permanently connected to local signal
-    q     <= sig_q;
-    q_bar <= not sig_q;
+    q     <= s_q;
+    q_bar <= not s_q;
+    
+    end process p_jk_ff_rst;
 end architecture Behavioral;
 ```
 
