@@ -22,22 +22,22 @@ begin
                 if (rst = '1') then
                     s_q <= '0';
                     
-                else 
-                    if (j = '0' and k = '0') then
-                        s_q <= s_q;  --priradime stejnou hodnotu -> nic se nemeni
-                        
-                    elsif (j = '0' and k = '1') then
-                        s_q <= '0'; --resetovani
-                        
-                    elsif (j = '1' and k = '0') then
-                        s_q <= '1';  --setovani
-                        
-                    elsif (j = '1' and k = '1') then
-                        s_q <= not s_q;  -- zamenujeme q
+                elsif (j = '0' and k = '0') then
+                    sig_q <= sig_q;  --priradime stejnou hodnotu -> nic se nemeni
                     
-                    end if;
-                end if;             
-            end if;
+                elsif (j = '0' and k = '1') then
+                    sig_q <= '0';  --resetovani
+                        
+                elsif (j = '1' and k = '0') then
+                    sig_q <= '1';   --setovani
+                
+                else 
+                    sig_q <= not sig_q; -- zamenujeme q (j=1 a k=1) 
+                end if;
+          end if;
+         q     <= sig_q;
+         q_bar <= not sig_q;            
+          
         end process p_jk_ff_rst;
 
     -- Output ports are permanently connected to local signal
