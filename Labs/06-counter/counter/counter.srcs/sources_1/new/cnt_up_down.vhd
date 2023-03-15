@@ -79,7 +79,7 @@ end entity cnt_up_down;
 
 architecture behavioral of cnt_up_down is
 
-  signal sig_cnt : unsigned(g_CNT_WIDTH - 1 downto 0); --! Local counter
+ signal sig_cnt : unsigned(g_CNT_WIDTH - 1 downto 0) := (others => '0'); --! Local counter
 
 begin
 
@@ -93,7 +93,7 @@ begin
 
     if rising_edge(clk) then
       if (rst = '1') then           -- Synchronous reset
-        sig_cnt <= (others => '0'); -- Clear all bits
+        sig_cnt <= (others => '0'); -- Clear all bits sig cnt je definovan generic a nezname ho ještì jak je široky, proto musí byt others 
       elsif (en = '1') then         -- Test if counter is enabled
 
         -- TEST COUNTER DIRECTION HERE

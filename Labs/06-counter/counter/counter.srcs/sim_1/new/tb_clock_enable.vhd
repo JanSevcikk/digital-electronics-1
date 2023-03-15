@@ -60,7 +60,7 @@ begin
   -- (Unit Under Test)
   uut_ce : entity work.clock_enable
     generic map (
-      g_MAX => c_MAX
+      g_MAX => c_MAX --pøepisujeme 5 na 10 a mužeme to vždy namapovat na jinou konstantu, co je uvedena nahoøe a ovlivní mi to design 
     ) -- Note that there is NO comma or semicolon between
       -- generic map section and port map section
     port map (

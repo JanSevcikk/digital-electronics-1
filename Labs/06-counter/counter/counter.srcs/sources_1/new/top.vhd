@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity top is
     Port ( CLK100MHZ : in STD_LOGIC;
            SW : in STD_LOGIC;
-           LED : out std_logic_vector (3 downto 0);
+       --    LED : out std_logic_vector (3 downto 0);
            CA : out STD_LOGIC;
            CB : out STD_LOGIC;
            CC : out STD_LOGIC;
@@ -109,6 +109,6 @@ begin
   -- Connect one common anode to 3.3V
   AN <= b"1111_1110";
   
-  LED(3 downto 0) <= sig_cnt_4bit;
+  --LED(3 downto 0) <= sig_cnt_4bit;
 
 end architecture behavioral;

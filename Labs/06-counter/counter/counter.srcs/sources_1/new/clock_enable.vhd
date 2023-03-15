@@ -46,7 +46,7 @@ library ieee;
 entity clock_enable is
   generic (
     g_MAX : natural := 5 --! Number of clk pulses to generate one enable signal period
-  );                       -- Note that there IS a semicolon between generic and port sections
+  );                       -- Note that there IS a semicolon between generic and port sections, max èítaè bude moci èítat do 5, 
   port (
     clk : in    std_logic; --! Main clock
     rst : in    std_logic; --! High-active synchronous reset
