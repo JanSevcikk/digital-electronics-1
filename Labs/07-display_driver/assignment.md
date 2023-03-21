@@ -15,30 +15,30 @@
     begin
         if rising_edge(clk) then
             if (reset = '1') then
-                s_hex <= data0_i;
-                dp_o  <= dp_i(0);
-                dig_o <= "1110";
+                sig_hex <= data0;
+                dp  <= dp_vect(0);
+                dig <= "1110";
             else
-                case s_cnt is
+                case sig_cnt is
                     when "11" =>
-                        s_hex <= data3_i; -- prirazeni dat do segmentovky
-                        dp_o  <= dp_i(3); -- zda sviti desetinna tecka
-                        dig_o <= "0111"; -- ktera segmentovka sepnuta
+                        sig_hex <= data3; -- prirazeni dat do segmentovky
+                        dp  <= dp_vect(3); -- zda sviti desetinna tecka
+                        dig <= "0111"; -- ktera segmentovka sepnuta
 
                     when "10" =>
-                        s_hex <= data2_i;
-                        dp_o  <= dp_i(2);
-                        dig_o <= "1011";
+                        sig_hex <= data2;
+                        dp  <= dp_vect(2);
+                        dig <= "1011";
 
                     when "01" =>
-                        s_hex <= data1_i;
-                        dp_o  <= dp_i(1);
-                        dig_o <= "1101";
+                        sig_hex <= data1;
+                        dp <= dp_vect(1);
+                        dig <= "1101";
 
                     when others =>
-                        s_hex <= data0_i;
-                        dp_o  <= dp_i(0);
-                        dig_o <= "1110";
+                        sig_hex <= data0;
+                        dp  <= dp_vect(0);
+                        dig <= "1110";
                 end case;
             end if;
         end if;
