@@ -32,8 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity hex_7seg is
-    Port ( hex_i : in STD_LOGIC_VECTOR (3 downto 0); -- 4 bitovy inputy
+    Port ( blank : in STD_LOGIC;
+           hex_i : in STD_LOGIC_VECTOR (3 downto 0); -- 4 bitovy inputy
            seg_o : out STD_LOGIC_VECTOR (6 downto 0)); -- 7 bitovy output
+          
 end hex_7seg;
 
 architecture Behavioral of hex_7seg is

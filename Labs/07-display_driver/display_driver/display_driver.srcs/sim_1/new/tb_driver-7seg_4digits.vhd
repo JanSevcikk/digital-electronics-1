@@ -102,7 +102,7 @@ begin
     report "Stimulus process started";
 
    -- s_data0 = 0010 ; s_data1 = 0010 ; s_data2 = 0001 ; s_data3 = 0011
-    -- segmentovky: 3 2 1 0   zobrazit: 3 1 4 2
+    -- segmentovky: 3 2 1 0   zobrazit: 3 1 4 2 nebo napieme x"1" a x znamena hexadecimal. 
     sig_data0 <= "0010";
     sig_data1 <= "0100";
     sig_data2 <= "0001";

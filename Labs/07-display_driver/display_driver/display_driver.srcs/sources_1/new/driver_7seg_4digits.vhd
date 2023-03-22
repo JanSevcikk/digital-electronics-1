@@ -116,7 +116,7 @@ begin
   --------------------------------------------------------
   hex2seg : entity work.hex_7seg
     port map (
-     -- blank => rst,
+      blank => rst,
       hex_i   => sig_hex,
       seg_o   => seg
     );

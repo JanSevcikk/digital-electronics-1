@@ -55,7 +55,7 @@ begin
   driver_seg_4 : entity work.driver_7seg_4digits
       port map(
           clk        => CLK100MHZ,
-          reset      => BTNC,
+          rst      => BTNC,
           
           data0(3) => SW(3),
           data0(2) => SW(2),
@@ -80,13 +80,13 @@ begin
           dp_vect      => "0111",
           
           dp      => DP,
-          seg_o(0)  => CG,
-          seg_o(1)  => CF,
-          seg_o(2)  => CE,
-          seg_o(3)  => CD,
-          seg_o(4)  => CC,
-          seg_o(5)  => CB,
-          seg_o(6)  => CA,
+          seg(0)  => CG,
+          seg(1)  => CF,
+          seg(2)  => CE,
+          seg(3)  => CD,
+          seg(4)  => CC,
+          seg(5)  => CB,
+          seg(6)  => CA,
             
           dig(3 downto 0) => AN(3 downto 0)
       );
