@@ -3,9 +3,9 @@
 
 ### Team members
 
-* Ivan Lipták [@xliptakxx](https://github.com/IvoSvk)(responsible for VHDL transmitter module)
-* Jan Ševčík [@xsevci71](https://github.com/JanSevcikk)(responsible for VHDL project github completation and documentation)
-* Martin Monček [@xmoncek](https://github.com/)(responsible for  VHDL receiver module)
+* Ivan Lipták [@240942](https://github.com/IvoSvk)(responsible for VHDL transmitter module and cooperation with receiver)
+* Jan Ševčík [@xsevci71](https://github.com/JanSevcikk)(responsible for VHDL project github completation and documentation and transmitter module)
+* Martin Monček [@240954](https://github.com/)(responsible for  VHDL receiver module and documentation fixes)
 
 ### Table of contents 
 
@@ -59,8 +59,6 @@ Second part is receiver, which needs to receive standardized input send by other
 #### Morse alphabet
 
 <img src="images/morse_alphabet.png" alt="morse" style="width:450px;"/>
-  
-In addition @ symbol is represented as **.--.-.**
     
 
 #### 7-seg alphabet implementation
@@ -78,16 +76,24 @@ The Nexys A7 board is a complete, ready-to-use digital circuit development platf
 From board are used:
 
 ### Buttons
--- použivane btn a nazvy
+Project uses two buttons. One for testing purposes - master reset, which resets all values to zero if the program happens to stuck in loop or another problem. Second (right) button is used to trancieve made text out.
+<img src="images/buttons.png" alt="morse" style="width:450px;"/>
+
+### Switches
+Switches are used for changing ASCII code. Using 8bit table to ASCII. Switches are used to change values 0 and 1. 
+<img src="images/switches.png" alt="morse" style="width:450px;"/>
 
 ### 7seg display 
-Used for shoved receiver/trasmitting alphabets and numbers. Code is based on existing code hex_7seg from lessons. 
+Used for shoved receiver/trasmitting alphabets and numbers. Code is based on existing code hex_7seg from lessons with minor changes.
+
+<img src="images/7seg.png" alt="morse" style="width:450px;"/>
 
 <a name="software"></a>
 
 ## Software description
 
 Put flowchats/state diagrams of your algorithm(s) and direct links to source/testbench files in `src` and `sim` folders. 
+
 
 <a name="component"></a>
 
@@ -99,7 +105,17 @@ Write descriptive text and simulation screenshots of your components.
 
 ## Instructions and video
 
-Write an instruction manual for your application, including photos or a link to a video.
+How to use Morse transmitter and receiver:
+### 1. Transmitting part
+Use bottom switches, to change ASCII values to made your desired value showed on 7seg display. XXXXXXXXXX
+
+<img src="images/send.png" alt="morse" style="width:450px;"/>
+
+### 2. Receiving part
+
+
+
+<img src="images/receive.png" alt="morse" style="width:450px;"/>
 
 [Video of working prototype](youtube.com)
 
