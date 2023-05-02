@@ -22,7 +22,7 @@
 
 ## Theoretical description and explanation 
 
-This project shows how to complete assingment of creating Morse code transmitter and receiver which works correctly and is able to transmitr user chosen message and receive generated message. 
+This project shows how to complete assingment of creating Morse code transmitter and receiver which works correctly and is able to transmiter user chosen message and receive generated message. 
 First objective is to choose button and switches which will be operate the device. We chosen way of using ASCII to binary code. On switches you chose value which is showed on 7seg display and is send by button. 
 
 Receiveng part needs to accept message on port JA. Message is received by using edge detector, which chooses rising edge and chooses if tha value is 0 or 1. Then the code changed fro
@@ -66,27 +66,41 @@ Project is build for using two boards instead of one. One is used only for recei
 
 ### Buttons
 Project uses two buttons. One for testing purposes - master reset, which resets all values to zero if the program happens to stuck in loop or another problem. Second (left) button is used to trancieve made text out.
-<img src="images/buttons.png" alt="morse" style="width:450px;"/>
 
 ### Switches
 Switches are used for changing ASCII code. Using 8bit table to ASCII. Switches are used to change values 0 and 1. Which is shoved on 7seg display.
-<img src="images/switches.png" alt="morse" style="width:450px;"/>
 
 ### 7seg display 
-Used for shoving receiver/trasmitting alphabets and numbers. Code is based on existing code hex_7seg from lessons with minor changes.
-
-<img src="images/7seg.png" alt="morse" style="width:450px;"/>
+Used for shoving receiver/trasmitting alphabets and numbers. Code is based on existing code hex_7seg from lessons with changes. Main change is using ASCII instead of hex. Also there are added another symbols (letters).
 
 ### Diodes
 In project in trasmitting part is used two LEDs, LED 0 for showing status of transmitting and LED 1 for blinking dots and lines (optional to looking)
+
+### Used components
+In picture we can see Nexys A7-50T and all parts that are used with description.
+<img src="images/board.png" alt="morse" style="width:450px;"/>
 
 <a name="software"></a>
 
 ## Software description
 
 ### Transmitter
+Hex7seg - base part is used from lessons with added features. First was change to using ASCII instead of hex, second change is added symbols to showing (alphabet). 
 
-Put flowchats/state diagrams of your algorithm(s) and direct links to source/testbench files in `src` and `sim` folders. 
+Ascii_to_morse
+This part of transmitter implements ASCII to Morse converter with using behaviroal architecture. Entity which is ascii_to_morse takes 8bit ASCII as input and produce 6bit Morse code as output. Morse code represents dots and lanes - dots are 1 and lanes is 0. Code calculates value from input text from ASCII to binary. This parts feeds data to morse transmitter.
+
+Morse_transmitter 
+Takes ASCII character as input and outputs sequence of dots and lines corresponding to Morse code. Based on its lenght it decides to continues or wait. From binary code it creates Morse code which is ready to transmit. Implements delays of 1 or 2 seconds which are used in various places. Delay or line is 2secs and for dot 1sec. This code also implements blinking on LED which represents dots and lines. 
+
+Top
+Implements transmitter and ascii to morse and hex7seg. Also implements port map with switches and buttons described above. 
+
+Above in the picture one we can see block diagram of the architecture and in the second picture is testbench of the code, showing s-morse (switches), s_seg (in binary which represents 7seg), s_start (btn_left for transmitting), s-position(leds blinking when trasmitting) and s_transmit(blinks which represents dots and lines while transmitting).
+
+<img src="images/block_diagram_transmitter.png" alt="morse" style="width:450px;"/>
+
+<img src="images/testbench.png" alt="morse" style="width:450px;"/>
 
 ### Receiver
 
@@ -123,4 +137,4 @@ Use bottom switches, to change ASCII values to made your desired value showed on
 1. [Board](https://digilent.com/reference/programmable-logic/nexys-a7/start)
 2. [ASCII table](https://bournetocode.com/projects/GCSE_Computing_Fundamentals/pages/img/ascii_table_lge.png)
 3. [display driver](https://github.com/tomas-fryza/digital-electronics-1/tree/master/labs/07-display_driver)
-4. [Decoder design in VHDL](https://www.researchgate.net/publication/305379385_Morse_code_decoder_design_in_VHDL_using_FPGA_Spartan_3E_development_kit)
+4. [Decoder design in VHDL](https://www.researchgate.net/publication/305379385_Morse_code_decoder_design_in_VHDL_using_FPGA_Spartan_3E_development_kit)d
