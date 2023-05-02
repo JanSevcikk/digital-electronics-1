@@ -25,7 +25,7 @@
 This project shows how to complete assingment of creating Morse code transmitter and receiver which works correctly and is able to transmiter user chosen message and receive generated message. 
 First objective is to choose button and switches which will be operate the device. We chosen way of using ASCII to binary code. On switches you chose value which is showed on 7seg display and is send by button. 
 
-Receiveng part needs to accept message on port JA. Message is received by using edge detector, which chooses rising edge and chooses if tha value is 0 or 1. Then the code changed fro
+Receiveng part needs to accept message on port JA. Message is received by using edge detector, which chooses rising edge and chooses if tha value is 0 or 1. If the there is rising edge then signal goes to bin_cnt0 if there is falling edge then goes to bin_ctn1. From count its goes to dontline detector which detectes if its dot or line. Then continues to two 5bit registers and continues to convertor morse_Ascii which converts code. Then goes to display latch - that changes ASCII code to 0 and 1 which needs to be shoved on display and then are shoved directly on display. 
 
 <a name="goals"></a>
 
@@ -34,7 +34,7 @@ The main goal of this project is to create a Morse Code Transmitter and Reciever
 
 First part was to made transmitter. Signals are entered via switches, like in real-life morse code usage (like telegraphs) - on switches you choose value in ASCII code (binary) with 8 switches (8bit binary code) by switching switches whichc changes values from 0 to 1. Chosen value is showed on right 7-seg display unit. After value is chosen you can send Morse code by pushing left push button. LED 0 blinks red light when there is sendind procedure. And LED 1 blink the morse code which you are sending. 
 
-Second part is receiver, which needs to receive standardized input send by other arduino device via. First you choose text which you wanna send in PuTTY on computer connected to Arduino which is connected to input port on Nexys A7. Mončekovo část......
+Second part is receiver, which needs to receive standardized input send by other arduino device via. First you choose text which you wanna send in PuTTY on computer connected to Arduino which is connected to input port on Nexys A7. There is also secondary solution which allows user to manualy create Morse signal by using upper button. 
 
 Our goal is to create simple Morse transmitter and receiver with functions that shows state of working.
 
