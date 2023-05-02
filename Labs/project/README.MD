@@ -36,9 +36,7 @@ First part was to made transmitter. Signals are entered via switches, like in re
 
 Second part is receiver, which needs to receive standardized input send by other arduino device via. First you choose text which you wanna send in PuTTY on computer connected to Arduino which is connected to input port on Nexys A7. There is also secondary solution which allows user to manualy create Morse signal by using upper button. 
 
-Our goal is to create simple Morse transmitter and receiver with functions that shows state of working.
-
-Using ASCII code 
+Our goal is to create Morse transmitter and receiver with functions that shows state of working and allows user to manualy create symbols to receive all with using ASCII codes in binary. 
 
 ### ASCII table to binary
 <img src="images/ascii.png" alt="morse" style="width:450px;"/>
