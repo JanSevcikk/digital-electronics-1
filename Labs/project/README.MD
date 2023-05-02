@@ -90,7 +90,7 @@ Hex7seg - base part is used from lessons with added features. First was change t
 Ascii_to_morse
 This part of transmitter implements ASCII to Morse converter with using behaviroal architecture. Entity which is ascii_to_morse takes 8bit ASCII as input and produce 6bit Morse code as output. Morse code represents dots and lanes - dots are 1 and lanes is 0. Code calculates value from input text from ASCII to binary. This parts feeds data to morse transmitter.
 
-Morse_transmitter 
+[morse_transmitter]()
 Takes ASCII character as input and outputs sequence of dots and lines corresponding to Morse code. Based on its lenght it decides to continues or wait. From binary code it creates Morse code which is ready to transmit. Implements delays of 1 or 2 seconds which are used in various places. Delay or line is 2secs and for dot 1sec. This code also implements blinking on LED which represents dots and lines. 
 
 Top
