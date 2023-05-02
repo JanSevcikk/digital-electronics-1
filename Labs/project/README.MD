@@ -92,14 +92,19 @@ Used for shoved receiver/trasmitting alphabets and numbers. Code is based on exi
 
 ## Software description
 
+### Transmitter
+
 Put flowchats/state diagrams of your algorithm(s) and direct links to source/testbench files in `src` and `sim` folders. 
 
+### Receiver
 
 <a name="component"></a>
 
 ### Component(s) simulation
+### Transmitter
 
 Write descriptive text and simulation screenshots of your components.
+### Receiver
 
 <a name="component"></a>
 
