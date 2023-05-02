@@ -109,63 +109,68 @@ Below in the picture one we can see block diagram of the architecture and in the
 
 ### Receiver
 
-[segment_display](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/hex_7seg.vhd)
+[segment_display](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/segment_display.vhd)
 Based on received code in ASCII code showes received letter on 7seg display onboard. 
 
-[latch_display0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/ascii_to_morse.vhd)
+[display_latch](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/display_latch.vhd)
 This block only works for extending time for showing letter on 7seg display onboard. 
 
-[morse_asci](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/morse_transmitter.vhd)
+[morse_asci](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/morse_asci.vhd)
 Block receives parallel values from every cell from shifting register and decides if received values are representing real alphabet letter, if not, then all segments are turned ON. If letter is alright then on output is moved its value in ascii table. 
 
-[shift_reg0 a shift_reg1](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/top.vhd)
+[shift_reg0 a shift_reg1](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/shift_register.vhd)
 Two similiar and complementary 5bit shifting register which serves as memory of the received values of Morse alphabet before decoding in block morse_asci.  
 
-[clock_enable](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+[clock_enable](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/clock_enable.vhd)
 Used from school lessons without biggest changes. In receiver its used for dividing in prepared ratio for ensuring right function of the code in lower speeds than is speed of clock crystal in the board.
 
-[dot_line_detector0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+[dot_line_detector0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/dot_line_detector.vhd)
 Based on number of received impulses from bin_ctn0 decides if it represents dot (then actives high level on output dot) if not then represents line and actives low level on output. If nothing is received then both outputs are set on 0 which prevents from decoding signals that are not from Morse alphabet. 
 
-[bin_cnt0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
-Based on number of received impulses from bin_ctn0 decides if it represents dot (then actives high level on output dot) if not then represents line and actives low level on output. If nothing is received then both outputs are set on 0 which prevents from decoding signals that are not from Morse alphabet. 
+[bin_cnt0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/cnt_up_down.vhd)
+Counts clock impulses while receiveng Morse code, counted byte number hands to dot_line_detector0 block. 
+
+[space_rst](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/Space_rst.vhd)
+Based on number of received impulses from bin_cnt1 decides if it is short pause (in this case sets high level on pin rst, which resets bin_ctn0 and shifting registers shift_reg0 and 1) if decides that its long pause, then sets low level on line output which tells that "letter" ended and resets shift_reg0 and 1 which prepares them to receiving another letter.
+
+[bin_ctn0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+Counts clock impulese between characters of Morse alphabet. Counted number in byte handle to evalution block space_rst0.
+
+[edge_detector](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/Morse_code_decoder/Morse_code_decoder.srcs/sources_1/new/edge_detector.vhd)
+Synchronizes received Morse alphabet with clock impulses from clock enable to ensuresing consisteng start of the Morse alphabet characters. 
+
 
 ### Receiver simulations
-Below in the picture one we can see block diagram of the architecture and in the second picture is testbench of the code, showing s-morse (switches), s_seg (in binary which represents 7seg), s_start (btn_left for transmitting), s-position(leds blinking when trasmitting) and s_transmit(blinks which represents dots and lines while transmitting). (NOT DONE) 
+Below in the picture one we can see block diagram of the architecture and in the second picture is testbench of the code, showing tesbench while receieving number 3. 
 
 <img src="images/diagram_receiver.png" alt="morse" style="width:800px;"/>
 
 <img src="images/sim_receiver.png" alt="morse" style="width:800px;"/>
 
 
-
-
-
-
-
 <a name="component"></a>
 
 ## Instructions and video
+1. Select two fully functional boards and decide which one will serve as receiver and second as transmitter
 
-How to use Morse transmitter and receiver:
-### 1. Transmitting part
-Use bottom switches, to change ASCII values to made your desired value showed on 7seg display. XXXXXXXXXX
+How to use Morse transmitter:
+2. Transmitter part: By using switches 0 to 7 (8 switches) alphabet or number with proper ASCII binary code by switching switches. Upper side is values as 1, down side as 0. Selected value will be shoved on 7seg display.
+3. If your chosen value is correct press left yellow button, which sends this value. While sending LED0 is blinking which indicates transmitting and LED1 blinks and showing dots or lines. 
+4. Troubleshoot: If something went wrong, use middle button to reset everything ("master reset")
 
-<img src="images/send.png" alt="morse" style="width:450px;"/>
+How to use Morse receiver:
+2. Connect arduino to JA port and connect with PuTTy on computer. Write values which you want to send. Then click and send those values.  
+3. On board - the values will be shoved on 7seg display. If the arduino not working correctly you can use step 4. 
+4. If something went wrong, use upper button to manualy create morse alphabet. Using short click to send dot and long click to send line.
+5. Troubleshoot: If something went wrong, use middle button to reset everything ("master reset")
 
-### 2. Receiving part
+<img src="images/board.png" alt="morse" style="width:650px;"/>
 
-
-
-<img src="images/receive.png" alt="morse" style="width:450px;"/>
-
-[Video of working prototype](youtube.comaaaaa)
 
 <a name="references"></a>
 
 ## References
-
 1. [Board](https://digilent.com/reference/programmable-logic/nexys-a7/start)
 2. [ASCII table](https://bournetocode.com/projects/GCSE_Computing_Fundamentals/pages/img/ascii_table_lge.png)
 3. [display driver](https://github.com/tomas-fryza/digital-electronics-1/tree/master/labs/07-display_driver)
-4. [Decoder design in VHDL](https://www.researchgate.net/publication/305379385_Morse_code_decoder_design_in_VHDL_using_FPGA_Spartan_3E_development_kit)d
+4. [Decoder design in VHDL](https://www.researchgate.net/publication/305379385_Morse_code_decoder_design_in_VHDL_using_FPGA_Spartan_3E_development_kit)
