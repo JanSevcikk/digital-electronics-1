@@ -5,7 +5,7 @@
 
 * Ivan Lipták [@240942](https://github.com/IvoSvk)(responsible for VHDL transmitter module and cooperation with receiver)
 * Jan Ševčík [@xsevci71](https://github.com/JanSevcikk)(responsible for VHDL project github completation and documentation and transmitter module)
-* Martin Monček [@240954](https://github.com/)(responsible for  VHDL receiver module and documentation fixes)
+* Martin Monček [@240954](https://github.com/moncekM)(responsible for  VHDL receiver module and documentation fixes)
 
 ### Table of contents 
 
