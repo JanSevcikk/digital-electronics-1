@@ -82,35 +82,66 @@ In picture we can see Nexys A7-50T and all parts that are used with description.
 
 <a name="software"></a>
 
-## Software description
+## Software description and simulations
 
 ### Transmitter
-Hex7seg - base part is used from lessons with added features. First was change to using ASCII instead of hex, second change is added symbols to showing (alphabet). 
+[hex7seg](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/hex_7seg.vhd)
+Base part is used from lessons with added features. First was change to using ASCII instead of hex, second change is added symbols to showing (alphabet). 
 
-Ascii_to_morse
+[ascii_to_morse](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/ascii_to_morse.vhd)
 This part of transmitter implements ASCII to Morse converter with using behaviroal architecture. Entity which is ascii_to_morse takes 8bit ASCII as input and produce 6bit Morse code as output. Morse code represents dots and lanes - dots are 1 and lanes is 0. Code calculates value from input text from ASCII to binary. This parts feeds data to morse transmitter.
 
-[morse_transmitter]()
+[morse_transmitter](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/morse_transmitter.vhd)
 Takes ASCII character as input and outputs sequence of dots and lines corresponding to Morse code. Based on its lenght it decides to continues or wait. From binary code it creates Morse code which is ready to transmit. Implements delays of 1 or 2 seconds which are used in various places. Delay or line is 2secs and for dot 1sec. This code also implements blinking on LED which represents dots and lines. 
 
-Top
+[top](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/top.vhd)
 Implements transmitter and ascii to morse and hex7seg. Also implements port map with switches and buttons described above. 
 
-Above in the picture one we can see block diagram of the architecture and in the second picture is testbench of the code, showing s-morse (switches), s_seg (in binary which represents 7seg), s_start (btn_left for transmitting), s-position(leds blinking when trasmitting) and s_transmit(blinks which represents dots and lines while transmitting).
+[clock_enable](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+Used from school lessons without changes.
 
-<img src="images/block_diagram_transmitter.png" alt="morse" style="width:450px;"/>
+### Transmitter simulations
+Below in the picture one we can see block diagram of the architecture and in the second picture is testbench of the code, showing s-morse (switches), s_seg (in binary which represents 7seg), s_start (btn_left for transmitting), s-position(leds blinking when trasmitting) and s_transmit(blinks which represents dots and lines while transmitting).
 
-<img src="images/testbench.png" alt="morse" style="width:450px;"/>
+<img src="images/block_diagram_transmitter.png" alt="morse" style="width:800px;"/>
+
+<img src="images/testbench.png" alt="morse" style="width:800px;"/>
 
 ### Receiver
 
-<a name="component"></a>
+[segment_display](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/hex_7seg.vhd)
+Based on received code in ASCII code showes received letter on 7seg display onboard. 
 
-### Component(s) simulation
-### Transmitter
+[latch_display0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/ascii_to_morse.vhd)
+This block only works for extending time for showing letter on 7seg display onboard. 
 
-Write descriptive text and simulation screenshots of your components.
-### Receiver
+[morse_asci](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/morse_transmitter.vhd)
+Block receives parallel values from every cell from shifting register and decides if received values are representing real alphabet letter, if not, then all segments are turned ON. If letter is alright then on output is moved its value in ascii table. 
+
+[shift_reg0 a shift_reg1](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/top.vhd)
+Two similiar and complementary 5bit shifting register which serves as memory of the received values of Morse alphabet before decoding in block morse_asci.  
+
+[clock_enable](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+Used from school lessons without biggest changes. In receiver its used for dividing in prepared ratio for ensuring right function of the code in lower speeds than is speed of clock crystal in the board.
+
+[dot_line_detector0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+Based on number of received impulses from bin_ctn0 decides if it represents dot (then actives high level on output dot) if not then represents line and actives low level on output. If nothing is received then both outputs are set on 0 which prevents from decoding signals that are not from Morse alphabet. 
+
+[bin_cnt0](https://github.com/JanSevcikk/digital-electronics-1/blob/main/Labs/project/morse_code_transmitter/morse_code_transmitter.srcs/sources_1/new/clock_enable.vhd)
+Based on number of received impulses from bin_ctn0 decides if it represents dot (then actives high level on output dot) if not then represents line and actives low level on output. If nothing is received then both outputs are set on 0 which prevents from decoding signals that are not from Morse alphabet. 
+
+### Receiver simulations
+Below in the picture one we can see block diagram of the architecture and in the second picture is testbench of the code, showing s-morse (switches), s_seg (in binary which represents 7seg), s_start (btn_left for transmitting), s-position(leds blinking when trasmitting) and s_transmit(blinks which represents dots and lines while transmitting). (NOT DONE) 
+
+<img src="images/diagram_receiver.png" alt="morse" style="width:800px;"/>
+
+<img src="images/sim_receiver.png" alt="morse" style="width:800px;"/>
+
+
+
+
+
+
 
 <a name="component"></a>
 
