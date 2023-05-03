@@ -171,7 +171,7 @@ Transmitter part fully functional showed on video below :
 
 [Transmiter video](https://youtu.be/ngoKILsRv5Y)
 
-Receiving part fully workd in terms of testbench showed above, but unfortunately we coud not make it work on physical board, probably because of some problems we have not figured out. 
+Receiving part fully workd in terms of testbench showed above, but unfortunately we coud not make it work on physical board, probably because of very strictly set bounderies of decision circuit but this was due to the protection against the long key hold, the project could be easily rewriten to be more precise and less strict in detection of dots and lines. 
 
 <a name="references"></a>
 
