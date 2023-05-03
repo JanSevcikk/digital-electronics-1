@@ -164,7 +164,7 @@ How to use Morse receiver:
 
 <img src="images/board.png" alt="morse" style="width:650px;"/>
 
-<video src="images/vid1.mp4" alt="morse" style="width:450px;"/>
+
 
 <a name="references"></a>
 
