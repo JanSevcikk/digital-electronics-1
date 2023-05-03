@@ -164,7 +164,14 @@ How to use Morse receiver:
 
 <img src="images/board.png" alt="morse" style="width:650px;"/>
 
+<a name="conclusion"></a>
 
+## Conclusion
+Transmitter part fully functional showed on video below : 
+
+[Transmiter video](https://youtu.be/ngoKILsRv5Y)
+
+Receiving part fully function test bench showed above but unfortunetly we coud not make it work on board, probably because of some clock issues :( . 
 
 <a name="references"></a>
 
