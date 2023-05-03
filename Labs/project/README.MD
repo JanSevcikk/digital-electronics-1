@@ -171,7 +171,7 @@ Transmitter part fully functional showed on video below :
 
 [Transmiter video](https://youtu.be/ngoKILsRv5Y)
 
-Receiving part fully function test bench showed above but unfortunetly we coud not make it work on board, probably because of some clock issues :( . 
+Receiving part fully function test bench showed above but unfortunetly we coud not make it work on board, probably because of some clock issues. 
 
 <a name="references"></a>
 
